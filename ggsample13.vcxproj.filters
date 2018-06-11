@@ -24,7 +24,7 @@
     <ClCompile Include="gg.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="GgTileShader.cpp">
+    <ClCompile Include="ggsample13.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,24 +35,24 @@
     <ClInclude Include="GgTileShader.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
+    <ClInclude Include="GgApplication.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="simple.frag">
+    <None Include="ggsample13.frag">
       <Filter>シェーダー ファイル</Filter>
     </None>
-    <None Include="tile.vert">
+    <None Include="ggsample13.vert">
       <Filter>シェーダー ファイル</Filter>
     </None>
-    <None Include="tile.frag">
+    <None Include="ggsample13mirror.vert">
       <Filter>シェーダー ファイル</Filter>
     </None>
-    <None Include="mirror.vert">
+    <None Include="ggsample13tile.frag">
       <Filter>シェーダー ファイル</Filter>
     </None>
-    <None Include="simple.vert">
+    <None Include="ggsample13tile.vert">
       <Filter>シェーダー ファイル</Filter>
     </None>
   </ItemGroup>
