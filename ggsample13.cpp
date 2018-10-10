@@ -15,7 +15,7 @@ const double cycle(10.0);
 const int objects(6);
 
 // 光源
-GgSimpleShader::Light lightProperty =
+GgSimpleShader::Light lightProperty
 {
   { 0.2f, 0.2f, 0.2f, 1.0f }, // 環境光成分
   { 1.0f, 1.0f, 1.0f, 0.0f }, // 拡散反射光成分
@@ -24,7 +24,7 @@ GgSimpleShader::Light lightProperty =
 };
 
 // 物体の材質
-const GgSimpleShader::Material objectMaterial =
+const GgSimpleShader::Material objectMaterial
 {
   { 0.8f, 0.8f, 0.8f, 1.0f }, // 環境光に対する反射係数
   { 0.8f, 0.8f, 0.8f, 0.0f }, // 拡散反射係数
@@ -33,7 +33,7 @@ const GgSimpleShader::Material objectMaterial =
 };
 
 // 地面の材質
-const GgSimpleShader::Material tileMaterial =
+const GgSimpleShader::Material tileMaterial
 {
   { 0.2f, 0.2f, 0.2f, 1.0f }, // 環境光に対する反射係数
   { 0.6f, 0.6f, 0.6f, 0.0f }, // 拡散反射係数
@@ -42,10 +42,10 @@ const GgSimpleShader::Material tileMaterial =
 };
 
 // ワールド座標系の通常の光源位置
-const GLfloat normal[] = { 0.0f, 4.0f, 0.0f, 1.0f };
+const GgVector position{ 0.0f, 4.0f, 0.0f, 1.0f };
 
 // ワールド座標系の光源の目標位置
-const GLfloat target[] = { 0.0f, 0.0f, 0.0f, 1.0f };
+const GgVector target{ 0.0f, 0.0f, 0.0f, 1.0f };
 
 // オブジェクトの描画
 //   shader: オブジェクトの描画に用いる GgSimpleShader 型のシェーダ
@@ -124,7 +124,7 @@ void GgApplication::run()
   const GgMatrix mv(ggLookat(0.0f, 3.0f, 8.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f));
 
   // 視点座標系の光源位置を求める
-  mv.projection(lightProperty.position, normal);
+  const GgVector normal(mv * position);
 
   // 光源の材質
   const std::unique_ptr<GgSimpleShader::LightBuffer> light(new GgSimpleShader::LightBuffer(lightProperty));
@@ -143,6 +143,9 @@ void GgApplication::run()
     
     // 画面消去
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    // 正像用の光源の位置
+    light->loadLightPosition(normal);
 
     // 正像用のシェーダの選択
     simple.use();
