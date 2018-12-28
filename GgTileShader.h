@@ -1,14 +1,14 @@
-#pragma once
+ï»¿#pragma once
 
 /*
-** ƒ^ƒCƒ‹
+** ã‚¿ã‚¤ãƒ«
 */
 #include "gg.h"
 
 namespace gg
 {
   /*
-  ** ˆê—l—””­¶ (Xorshift –@)
+  ** ä¸€æ§˜ä¹±æ•°ç™ºç”Ÿ (Xorshift æ³•)
   */
   inline GLfloat xor128()
   {
@@ -26,7 +26,7 @@ namespace gg
   }
 
   /*
-  ** ³‹K—””­¶ (Box Muller –@)
+  ** æ­£è¦ä¹±æ•°ç™ºç”Ÿ (Box Muller æ³•)
   */
   inline void boxmuller(GLfloat *r)
   {
@@ -40,74 +40,80 @@ namespace gg
   class GgTileShader
     : public GgSimpleShader
   {
-    // ‰f‚è‚İ‚ÌƒTƒ“ƒvƒ‹”
+    // æ˜ ã‚Šè¾¼ã¿ã®ã‚µãƒ³ãƒ—ãƒ«æ•°
     static const int samples = 16;
 
-    // ƒeƒNƒXƒ`ƒƒƒ†ƒjƒbƒg
-    GLuint color;             // ƒJƒ‰[ƒ}ƒbƒv‚ÌƒeƒNƒXƒ`ƒƒƒ†ƒjƒbƒg
-    GLint colorLoc;           // ƒJƒ‰[ƒ}ƒbƒv‚ÌƒeƒNƒXƒ`ƒƒƒ†ƒjƒbƒg‚Ì uniform •Ï”‚ÌêŠ
-    GLuint depth;             // ƒfƒvƒXƒ}ƒbƒv‚ÌƒeƒNƒXƒ`ƒƒƒ†ƒjƒbƒg
-    GLint depthLoc;           // ƒfƒvƒXƒ}ƒbƒv‚ÌƒeƒNƒXƒ`ƒƒƒ†ƒjƒbƒg‚Ì uniform •Ï”‚ÌêŠ
+    // ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¦ãƒ‹ãƒƒãƒˆ
+    GLuint color;             // ã‚«ãƒ©ãƒ¼ãƒãƒƒãƒ—ã®ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¦ãƒ‹ãƒƒãƒˆ
+    GLint colorLoc;           // ã‚«ãƒ©ãƒ¼ãƒãƒƒãƒ—ã®ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¦ãƒ‹ãƒƒãƒˆã® uniform å¤‰æ•°ã®å ´æ‰€
+    GLuint depth;             // ãƒ‡ãƒ—ã‚¹ãƒãƒƒãƒ—ã®ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¦ãƒ‹ãƒƒãƒˆ
+    GLint depthLoc;           // ãƒ‡ãƒ—ã‚¹ãƒãƒƒãƒ—ã®ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¦ãƒ‹ãƒƒãƒˆã® uniform å¤‰æ•°ã®å ´æ‰€
 
-    // ƒVƒƒƒhƒEƒ}ƒbƒsƒ“ƒO—p‚Ì•ÏŠ·s—ñ
-    GLint msLoc;              // ƒVƒƒƒhƒEƒ}ƒbƒsƒ“ƒO—p‚Ì•ÏŠ·s—ñ‚Ì uniform •Ï”‚ÌêŠ
+    // ã‚·ãƒ£ãƒ‰ã‚¦ãƒãƒƒãƒ”ãƒ³ã‚°ç”¨ã®å¤‰æ›è¡Œåˆ—
+    GLint msLoc;              // ã‚·ãƒ£ãƒ‰ã‚¦ãƒãƒƒãƒ”ãƒ³ã‚°ç”¨ã®å¤‰æ›è¡Œåˆ—ã® uniform å¤‰æ•°ã®å ´æ‰€
 
-    // ƒrƒ…ƒ|[ƒg
-    GLint vpLoc;              // ƒrƒ…[ƒ|[ƒg‚Ì uniform •Ï”‚ÌêŠ
+    // ãƒ“ãƒ¥ãƒãƒ¼ãƒˆ
+    GLint vpLoc;              // ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆã® uniform å¤‰æ•°ã®å ´æ‰€
 
-    // —”
-    GLfloat rn[samples * 2];  // —”ƒe[ƒuƒ‹
-    GLint rnLoc;              // —”ƒe[ƒuƒ‹‚Ì uniform •Ï”‚ÌêŠ
+    // ä¹±æ•°
+    GLfloat rn[samples * 2];  // ä¹±æ•°ãƒ†ãƒ¼ãƒ–ãƒ«
+    GLint rnLoc;              // ä¹±æ•°ãƒ†ãƒ¼ãƒ–ãƒ«ã® uniform å¤‰æ•°ã®å ´æ‰€
 
   public:
 
-    // ƒfƒXƒgƒ‰ƒNƒ^
+    // ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
     virtual ~GgTileShader() {}
 
-    // ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+    // ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
     GgTileShader() {}
     GgTileShader(const char *vert, const char *frag = 0,
       const char *geom = 0, int nvarying = 0, const char **varyings = 0)
       : GgSimpleShader(vert, frag, geom, nvarying, varyings)
     {
-      // ƒvƒƒOƒ‰ƒ€–¼
+      // ãƒ—ãƒ­ã‚°ãƒ©ãƒ å
       GLuint program = get();
 
-      // ƒeƒNƒXƒ`ƒƒƒ†ƒjƒbƒg‚Ì uniform •Ï”‚ÌêŠ
+      // ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¦ãƒ‹ãƒƒãƒˆã® uniform å¤‰æ•°ã®å ´æ‰€
       colorLoc = glGetUniformLocation(program, "color");
       depthLoc = glGetUniformLocation(program, "depth");
 
-      // ƒVƒƒƒhƒEƒ}ƒbƒsƒ“ƒO—p‚Ì uniform •Ï”‚ÌêŠ
+      // ã‚·ãƒ£ãƒ‰ã‚¦ãƒãƒƒãƒ”ãƒ³ã‚°ç”¨ã® uniform å¤‰æ•°ã®å ´æ‰€
       msLoc = glGetUniformLocation(program, "ms");
 
-      // ƒrƒ…[ƒ|[ƒg‚Ì uniform •Ï”‚ÌêŠ
+      // ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆã® uniform å¤‰æ•°ã®å ´æ‰€
       vpLoc = glGetUniformLocation(program, "vp");
 
-      // —”‚Ì uniform •Ï”‚ÌêŠ
+      // ä¹±æ•°ã® uniform å¤‰æ•°ã®å ´æ‰€
       rnLoc = glGetUniformLocation(program, "rn");
       for (unsigned int i = 0; i < sizeof rn / sizeof rn[0]; i += 2) boxmuller(rn + i);
     }
 
-    // ƒVƒF[ƒ_‚Ìg—pŠJn
-    void use() const
+    // ã‚·ã‚§ãƒ¼ãƒ€ã®ä½¿ç”¨é–‹å§‹
+    void use(const LightBuffer *light, GLint i = 0) const
     {
-      // Šî’êƒNƒ‰ƒX‚ÌƒVƒF[ƒ_‚Ìİ’è‚ğŒÄ‚Ño‚·
-      GgSimpleShader::use();
+      // åŸºåº•ã‚¯ãƒ©ã‚¹ã®ã‚·ã‚§ãƒ¼ãƒ€ã®è¨­å®šã‚’å‘¼ã³å‡ºã™
+      GgSimpleShader::use(light, i);
 
-      // —”
+      // ä¹±æ•°
       glUniform2fv(rnLoc, sizeof rn / sizeof rn[0] / 2, rn);
 
-      // ƒrƒ…[ƒ|[ƒg
+      // ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆ
       GLint vp[4];
       glGetIntegerv(GL_VIEWPORT, vp);
       glUniform2f(vpLoc, static_cast<GLfloat>(vp[2]), static_cast<GLfloat>(vp[3]));
 
-      // ƒeƒNƒXƒ`ƒƒƒ†ƒjƒbƒg
+      // ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¦ãƒ‹ãƒƒãƒˆ
       glUniform1i(colorLoc, 0);
       glUniform1i(depthLoc, 1);
     }
 
-    // ƒVƒƒƒhƒEƒ}ƒbƒsƒ“ƒO—p‚Ì•ÏŠ·s—ñ
+    // ã‚·ã‚§ãƒ¼ãƒ€ã®ä½¿ç”¨é–‹å§‹
+    void use(const LightBuffer &light, GLint i = 0) const
+    {
+      use(&light, i);
+    }
+
+    // ã‚·ãƒ£ãƒ‰ã‚¦ãƒãƒƒãƒ”ãƒ³ã‚°ç”¨ã®å¤‰æ›è¡Œåˆ—
     void loadShadowMatrix(const GLfloat *m) { glUniformMatrix4fv(msLoc, 1, GL_FALSE, m); }
     void loadShadowMatrix(const GgMatrix &m) { loadShadowMatrix(m.get()); }
   };

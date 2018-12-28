@@ -49,16 +49,15 @@ const GgVector target{ 0.0f, 0.0f, 0.0f, 1.0f };
 
 // オブジェクトの描画
 //   shader: オブジェクトの描画に用いる GgSimpleShader 型のシェーダ
-//   mp: オブジェクトを描画する際の GgMatrix 型の投影変換行列
 //   mv: オブジェクトを描画する際の GgMatrix 型のビュー変換行列
 //   object: 描画するオブジェクト
 //   count: 描画するオブジェクトの数
 //   t: [0, 1] の値 (時刻)
-void drawObjects(const GgSimpleShader &shader, const GgMatrix &mp, const GgMatrix &mv,
-  const GgElements *object, const GgSimpleShader::MaterialBuffer *material, int count, float t)
+void drawObjects(const GgSimpleShader &shader, const GgMatrix &mv, const GgElements *object,
+  const GgSimpleShader::MaterialBuffer &material, int count, float t)
 {
   // 図形のデフォルトの材質
-  shader.selectMaterial(material);
+  material.select();
 
   // シェーダプログラムの使用開始 (時刻 t にもとづく回転アニメーション)
   for (int i = 1; i <= count; ++i)
@@ -79,10 +78,10 @@ void drawObjects(const GgSimpleShader &shader, const GgMatrix &mp, const GgMatri
     };
 
     // 個々の図形の材質
-    material->loadMaterialAmbientAndDiffuse(color);
+    material.loadAmbientAndDiffuse(color);
 
     // 図形の描画
-    shader.loadMatrix(mp, mv * ma);
+    shader.loadModelviewMatrix(mv * ma);
     object->draw();
   }
 }
@@ -109,13 +108,13 @@ void GgApplication::run()
   GgTileShader floor("ggsample13tile.vert", "ggsample13tile.frag");
 
   // 地面の材質
-  std::unique_ptr<GgTileShader::MaterialBuffer> tile(new GgTileShader::MaterialBuffer(tileMaterial));
+  GgTileShader::MaterialBuffer tile(tileMaterial);
 
   // OBJ ファイルの読み込み
   const std::unique_ptr<const GgElements> object(ggElementsObj("bunny.obj"));
 
   // デフォルトの材質
-  const std::unique_ptr<GgSimpleShader::MaterialBuffer> material(new GgSimpleShader::MaterialBuffer(objectMaterial));
+  const GgSimpleShader::MaterialBuffer material(objectMaterial);
 
   // 地面
   const std::unique_ptr<const GgTriangles> rectangle(ggRectangle(4.0f, 4.0f));
@@ -127,13 +126,13 @@ void GgApplication::run()
   const GgVector normal(mv * position);
 
   // 光源の材質
-  const std::unique_ptr<GgSimpleShader::LightBuffer> light(new GgSimpleShader::LightBuffer(lightProperty));
+  const GgSimpleShader::LightBuffer light(lightProperty);
 
   // 経過時間のリセット
   glfwSetTime(0.0);
 
   // ウィンドウが開いている間くり返し描画する
-  while (window.shouldClose() == GL_FALSE)
+  while (window)
   {
     // 時刻の計測
     const float t(static_cast<float>(fmod(glfwGetTime(), cycle) / cycle));
@@ -145,22 +144,20 @@ void GgApplication::run()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // 正像用の光源の位置
-    light->loadLightPosition(normal);
+    light.loadPosition(normal);
 
     // 正像用のシェーダの選択
-    simple.use();
-    simple.selectLight(light.get());
+    simple.use(mp, light);
 
     // 正像の描画
-    drawObjects(simple, mp, mv, object.get(), material.get(), objects, t);
+    drawObjects(simple, mv, object.get(), material, objects, t);
 
     // 床面用のシェーダの選択
-    floor.use();
-    floor.selectLight(light.get());
+    floor.use(light);
     
     // 床面の描画
-    floor.selectMaterial(tile.get());
     floor.loadMatrix(mp, mv.rotateX(-1.5707963f));
+    tile.select();
     rectangle->draw();
 
     // カラーバッファを入れ替えてイベントを取り出す
