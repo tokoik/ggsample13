@@ -22,7 +22,7 @@
     <ProjectGuid>{210FAA0C-6371-4672-9E24-64F2537D82ED}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>ggsample13</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -154,7 +154,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gg.h" />
-    <ClInclude Include="GgApplication.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Window.h" />
     <ClInclude Include="GgTileShader.h" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +164,12 @@
     <None Include="ggsample13.vert" />
     <None Include="ggsample13tile.frag" />
     <None Include="ggsample13tile.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ggsample13.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="gg.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

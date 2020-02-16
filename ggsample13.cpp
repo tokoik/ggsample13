@@ -1,5 +1,5 @@
 ﻿// ウィンドウ関連の処理
-#include "GgApplication.h"
+#include "Window.h"
 
 // タイルのシェーダ
 #include "GgTileShader.h"
@@ -89,7 +89,7 @@ void drawObjects(const GgSimpleShader &shader, const GgMatrix &mv, const GgEleme
 //
 // アプリケーションの実行
 //
-void GgApplication::run()
+void app()
 {
   // ウィンドウを作成する
   Window window("ggsample13");
