@@ -66,8 +66,8 @@ namespace gg
 
     // コンストラクタ
     GgTileShader() {}
-    GgTileShader(const char *vert, const char *frag = 0,
-      const char *geom = 0, int nvarying = 0, const char **varyings = 0)
+    GgTileShader(const std::string& vert, const std::string& frag = "",
+      const std::string& geom = "", int nvarying = 0, const char **varyings = 0)
       : GgSimpleShader(vert, frag, geom, nvarying, varyings)
     {
       // プログラム名

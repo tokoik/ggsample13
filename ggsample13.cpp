@@ -1,18 +1,21 @@
-﻿// ウィンドウ関連の処理
-#include "Window.h"
+﻿//
+// ゲームグラフィックス特論宿題アプリケーション
+//
+#include "GgApp.h"
+
+// プロジェクト名
+#ifndef PROJECT_NAME
+#  define PROJECT_NAME "ggsample13"
+#endif
 
 // タイルのシェーダ
 #include "GgTileShader.h"
 
-// 標準ライブラリ
-#include <cmath>
-#include <memory>
-
 // アニメーションの周期（秒）
-const double cycle(10.0);
+constexpr auto cycle{ 10.0 };
 
 // オブジェクトの数
-const int objects(6);
+constexpr auto objects{ 6 };
 
 // 光源
 GgSimpleShader::Light lightProperty
@@ -53,8 +56,8 @@ const GgVector target{ 0.0f, 0.0f, 0.0f, 1.0f };
 //   object: 描画するオブジェクト
 //   count: 描画するオブジェクトの数
 //   t: [0, 1] の値 (時刻)
-void drawObjects(const GgSimpleShader &shader, const GgMatrix &mv, const GgElements *object,
-  const GgSimpleShader::MaterialBuffer &material, int count, float t)
+void drawObjects(const GgSimpleShader& shader, const GgMatrix& mv, const GgElements* object,
+  const GgSimpleShader::MaterialBuffer& material, int count, float t)
 {
   // 図形のデフォルトの材質
   material.select();
@@ -63,13 +66,13 @@ void drawObjects(const GgSimpleShader &shader, const GgMatrix &mv, const GgEleme
   for (int i = 1; i <= count; ++i)
   {
     // アニメーションの変換行列
-    const GLfloat h(fmod(36.0f * t, 2.0f) - 1.0f);
-    const GLfloat x(0.0f), y(1.0f - h * h), z(1.5f);
-    const GLfloat r(static_cast<GLfloat>(M_PI * (2.0 * i / GLfloat(count) - 4.0 * t)));
-    const GgMatrix ma(ggRotateY(r).translate(x, y, z));
+    const GLfloat h{ fmod(36.0f * t, 2.0f) - 1.0f };
+    const GLfloat x{ 0.0f }, y{ 1.0f - h * h }, z{ 1.5f };
+    const GLfloat r{ static_cast<GLfloat>(M_PI * (2.0 * i / count - 4.0 * t)) };
+    const GgMatrix ma{ ggRotateY(r).translate(x, y, z) };
 
     // オブジェクトの色
-    const GLfloat color[] =
+    const GLfloat color[]
     {
       (i & 1) * 0.4f + 0.4f,
       (i & 2) * 0.2f + 0.4f,
@@ -87,12 +90,12 @@ void drawObjects(const GgSimpleShader &shader, const GgMatrix &mv, const GgEleme
 }
 
 //
-// アプリケーションの実行
+// アプリケーション本体
 //
-void app()
+int GgApp::main(int argc, const char* const* argv)
 {
-  // ウィンドウを作成する
-  Window window("ggsample13");
+  // ウィンドウを作成する (この行は変更しないでください)
+  Window window{ argc > 1 ? argv[1] : PROJECT_NAME };
 
   // 背景色を指定する
   glClearColor(0.1f, 0.2f, 0.3f, 0.0f);
@@ -102,31 +105,34 @@ void app()
   glEnable(GL_CULL_FACE);
 
   // 正像用のプログラムオブジェクト
-  GgSimpleShader simple("ggsample13.vert", "ggsample13.frag");
+  GgSimpleShader simple{ PROJECT_NAME ".vert", PROJECT_NAME ".frag" };
+
+  // 鏡像用のプログラムオブジェクト
+  GgSimpleShader mirror{ PROJECT_NAME "mirror.vert", PROJECT_NAME ".frag" };
 
   // 地面用のプログラムオブジェクト
-  GgTileShader floor("ggsample13tile.vert", "ggsample13tile.frag");
+  GgTileShader floor{ PROJECT_NAME "tile.vert", PROJECT_NAME "tile.frag" };
 
   // 地面の材質
-  GgTileShader::MaterialBuffer tile(tileMaterial);
+  GgTileShader::MaterialBuffer tile{ tileMaterial };
 
   // OBJ ファイルの読み込み
-  const std::unique_ptr<const GgElements> object(ggElementsObj("bunny.obj"));
+  const std::unique_ptr<const GgElements> object{ ggElementsObj("bunny.obj") };
 
   // デフォルトの材質
-  const GgSimpleShader::MaterialBuffer material(objectMaterial);
+  const GgSimpleShader::MaterialBuffer material{ objectMaterial };
 
   // 地面
-  const std::unique_ptr<const GgTriangles> rectangle(ggRectangle(4.0f, 4.0f));
+  const std::unique_ptr<const GgTriangles> rectangle{ ggRectangle(4.0f, 4.0f) };
 
   // 正像のビュー変換行列を mv に求める
-  const GgMatrix mv(ggLookat(0.0f, 3.0f, 8.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f));
+  const auto mv{ ggLookat(0.0f, 3.0f, 8.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f) };
 
   // 視点座標系の光源位置を求める
-  const GgVector normal(mv * position);
+  const auto normal{ mv * position };
 
   // 光源の材質
-  const GgSimpleShader::LightBuffer light(lightProperty);
+  const GgSimpleShader::LightBuffer light{ lightProperty };
 
   // 経過時間のリセット
   glfwSetTime(0.0);
@@ -135,11 +141,11 @@ void app()
   while (window)
   {
     // 時刻の計測
-    const float t(static_cast<float>(fmod(glfwGetTime(), cycle) / cycle));
+    const auto t{ static_cast<float>(fmod(glfwGetTime(), cycle) / cycle) };
 
     // 投影変換行列
-    const GgMatrix mp(ggPerspective(0.5f, window.getAspect(), 1.0f, 15.0f));
-    
+    const auto mp{ ggPerspective(0.5f, window.getAspect(), 1.0f, 15.0f) };
+
     // 画面消去
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -154,7 +160,7 @@ void app()
 
     // 床面用のシェーダの選択
     floor.use(light);
-    
+
     // 床面の描画
     floor.loadMatrix(mp, mv.rotateX(-1.5707963f));
     tile.select();
@@ -163,4 +169,6 @@ void app()
     // カラーバッファを入れ替えてイベントを取り出す
     window.swapBuffers();
   }
+
+  return 0;
 }
