@@ -154,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gg.h" />
+    <ClInclude Include="GgApp.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="GgTileShader.h" />
