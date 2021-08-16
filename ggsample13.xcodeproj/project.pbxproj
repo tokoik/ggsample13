@@ -23,20 +23,21 @@
 /* Begin PBXFileReference section */
 		7D1E90EE1123E36C005E6C75 /* ggsample13.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ggsample13.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D1E90F11123E36C005E6C75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7D48F1F01955A3ED007E1372 /* ggsample13mirror.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = ggsample13mirror.vert; sourceTree = "<group>"; };
-		7D57106B23F8FE5400856C4B /* Window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
+		7D48F1F01955A3ED007E1372 /* ggsample13mirror.vert */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = ggsample13mirror.vert; sourceTree = "<group>"; tabWidth = 2; };
+		7D57106B23F8FE5400856C4B /* Window.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Window.h; sourceTree = "<group>"; tabWidth = 2; };
 		7D57106C23F8FE5A00856C4B /* gg.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = gg.icns; sourceTree = "<group>"; };
-		7D7DF0E51F1217C100EAF506 /* ggsample13.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = ggsample13.vert; sourceTree = "<group>"; };
+		7D5C711326CAA0BC00850464 /* GgApp.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GgApp.h; sourceTree = "<group>"; tabWidth = 2; };
+		7D7DF0E51F1217C100EAF506 /* ggsample13.vert */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = ggsample13.vert; sourceTree = "<group>"; tabWidth = 2; };
 		7D82709620CFFE4500E789F3 /* bunny.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; path = bunny.mtl; sourceTree = "<group>"; };
 		7D82709820CFFE6C00E789F3 /* ggsample13.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = ggsample13.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		7DA7EFE015AB157F00CEB67C /* bunny.obj */ = {isa = PBXFileReference; fileEncoding = 8; lastKnownFileType = text; path = bunny.obj; sourceTree = "<group>"; };
-		7DC2D9A8150E3E25007E9256 /* gg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = gg.cpp; sourceTree = "<group>"; };
-		7DC2D9A9150E3E25007E9256 /* gg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = gg.h; sourceTree = "<group>"; };
-		7DC2D9AB150E3E2D007E9256 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = main.cpp; sourceTree = "<group>"; };
-		7DC2D9CB150E3E6F007E9256 /* ggsample13.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = ggsample13.frag; sourceTree = "<group>"; };
-		7DC2D9CD150E3E7A007E9256 /* ggsample13tile.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = ggsample13tile.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		7DC2D9CE150E3E7A007E9256 /* ggsample13tile.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = ggsample13tile.vert; sourceTree = "<group>"; };
-		7DF99C2A15E0D7A5002F4EB7 /* GgTileShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GgTileShader.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7DC2D9A8150E3E25007E9256 /* gg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = gg.cpp; sourceTree = "<group>"; tabWidth = 2; };
+		7DC2D9A9150E3E25007E9256 /* gg.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = gg.h; sourceTree = "<group>"; tabWidth = 2; };
+		7DC2D9AB150E3E2D007E9256 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = main.cpp; sourceTree = "<group>"; tabWidth = 2; };
+		7DC2D9CB150E3E6F007E9256 /* ggsample13.frag */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = ggsample13.frag; sourceTree = "<group>"; tabWidth = 2; };
+		7DC2D9CD150E3E7A007E9256 /* ggsample13tile.frag */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = ggsample13tile.frag; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		7DC2D9CE150E3E7A007E9256 /* ggsample13tile.vert */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = ggsample13tile.vert; sourceTree = "<group>"; tabWidth = 2; };
+		7DF99C2A15E0D7A5002F4EB7 /* GgTileShader.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GgTileShader.h; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +56,11 @@
 			children = (
 				7D82709820CFFE6C00E789F3 /* ggsample13.cpp */,
 				7DC2D9AB150E3E2D007E9256 /* main.cpp */,
-				7D57106B23F8FE5400856C4B /* Window.h */,
-				7DC2D9A8150E3E25007E9256 /* gg.cpp */,
-				7DC2D9A9150E3E25007E9256 /* gg.h */,
 				7DF99C2A15E0D7A5002F4EB7 /* GgTileShader.h */,
+				7D5C711326CAA0BC00850464 /* GgApp.h */,
+				7D57106B23F8FE5400856C4B /* Window.h */,
+				7DC2D9A9150E3E25007E9256 /* gg.h */,
+				7DC2D9A8150E3E25007E9256 /* gg.cpp */,
 				7D7DF0E51F1217C100EAF506 /* ggsample13.vert */,
 				7DC2D9CB150E3E6F007E9256 /* ggsample13.frag */,
 				7D48F1F01955A3ED007E1372 /* ggsample13mirror.vert */,
