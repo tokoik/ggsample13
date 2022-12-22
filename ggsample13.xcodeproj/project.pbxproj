@@ -12,6 +12,7 @@
 		7D7DF0E61F1217C100EAF506 /* ggsample13.vert in Resources */ = {isa = PBXBuildFile; fileRef = 7D7DF0E51F1217C100EAF506 /* ggsample13.vert */; };
 		7D82709720CFFE5600E789F3 /* bunny.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 7D82709620CFFE4500E789F3 /* bunny.mtl */; };
 		7D82709920CFFE6C00E789F3 /* ggsample13.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D82709820CFFE6C00E789F3 /* ggsample13.cpp */; };
+		7DA620CF29543BA900849AD5 /* GgApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DA620CE29543BA900849AD5 /* GgApp.cpp */; };
 		7DA7EFE115AB158C00CEB67C /* bunny.obj in Resources */ = {isa = PBXBuildFile; fileRef = 7DA7EFE015AB157F00CEB67C /* bunny.obj */; };
 		7DC2D9AA150E3E25007E9256 /* gg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DC2D9A8150E3E25007E9256 /* gg.cpp */; };
 		7DC2D9AC150E3E2D007E9256 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DC2D9AB150E3E2D007E9256 /* main.cpp */; };
@@ -24,12 +25,12 @@
 		7D1E90EE1123E36C005E6C75 /* ggsample13.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ggsample13.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D1E90F11123E36C005E6C75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D48F1F01955A3ED007E1372 /* ggsample13mirror.vert */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = ggsample13mirror.vert; sourceTree = "<group>"; tabWidth = 2; };
-		7D57106B23F8FE5400856C4B /* Window.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Window.h; sourceTree = "<group>"; tabWidth = 2; };
 		7D57106C23F8FE5A00856C4B /* gg.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = gg.icns; sourceTree = "<group>"; };
 		7D5C711326CAA0BC00850464 /* GgApp.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GgApp.h; sourceTree = "<group>"; tabWidth = 2; };
 		7D7DF0E51F1217C100EAF506 /* ggsample13.vert */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = ggsample13.vert; sourceTree = "<group>"; tabWidth = 2; };
 		7D82709620CFFE4500E789F3 /* bunny.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; path = bunny.mtl; sourceTree = "<group>"; };
 		7D82709820CFFE6C00E789F3 /* ggsample13.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = ggsample13.cpp; sourceTree = "<group>"; tabWidth = 2; };
+		7DA620CE29543BA900849AD5 /* GgApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GgApp.cpp; sourceTree = "<group>"; };
 		7DA7EFE015AB157F00CEB67C /* bunny.obj */ = {isa = PBXFileReference; fileEncoding = 8; lastKnownFileType = text; path = bunny.obj; sourceTree = "<group>"; };
 		7DC2D9A8150E3E25007E9256 /* gg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = gg.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		7DC2D9A9150E3E25007E9256 /* gg.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = gg.h; sourceTree = "<group>"; tabWidth = 2; };
@@ -58,7 +59,7 @@
 				7DC2D9AB150E3E2D007E9256 /* main.cpp */,
 				7DF99C2A15E0D7A5002F4EB7 /* GgTileShader.h */,
 				7D5C711326CAA0BC00850464 /* GgApp.h */,
-				7D57106B23F8FE5400856C4B /* Window.h */,
+				7DA620CE29543BA900849AD5 /* GgApp.cpp */,
 				7DC2D9A9150E3E25007E9256 /* gg.h */,
 				7DC2D9A8150E3E25007E9256 /* gg.cpp */,
 				7D7DF0E51F1217C100EAF506 /* ggsample13.vert */,
@@ -155,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D82709920CFFE6C00E789F3 /* ggsample13.cpp in Sources */,
+				7DA620CF29543BA900849AD5 /* GgApp.cpp in Sources */,
 				7DC2D9AA150E3E25007E9256 /* gg.cpp in Sources */,
 				7DC2D9AC150E3E2D007E9256 /* main.cpp in Sources */,
 			);
