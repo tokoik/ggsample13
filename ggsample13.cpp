@@ -66,7 +66,7 @@ void drawObjects(const GgSimpleShader& shader, const GgMatrix& mv, const GgEleme
   for (int i = 1; i <= count; ++i)
   {
     // アニメーションの変換行列
-    const GLfloat h{ fmod(36.0f * t, 2.0f) - 1.0f };
+    const GLfloat h{ fmodf(36.0f * t, 2.0f) - 1.0f };
     const GLfloat x{ 0.0f }, y{ 1.0f - h * h }, z{ 1.5f };
     const GLfloat r{ static_cast<GLfloat>(M_PI * (2.0 * i / count - 4.0 * t)) };
     const GgMatrix ma{ ggRotateY(r).translate(x, y, z) };
@@ -117,13 +117,13 @@ int GgApp::main(int argc, const char* const* argv)
   GgTileShader::MaterialBuffer tile{ tileMaterial };
 
   // OBJ ファイルの読み込み
-  const std::unique_ptr<const GgElements> object{ ggElementsObj("bunny.obj") };
+  const auto object{ ggElementsObj("bunny.obj") };
 
   // デフォルトの材質
   const GgSimpleShader::MaterialBuffer material{ objectMaterial };
 
   // 地面
-  const std::unique_ptr<const GgTriangles> rectangle{ ggRectangle(4.0f, 4.0f) };
+  const auto rectangle{ ggRectangle(4.0f, 4.0f) };
 
   // 正像のビュー変換行列を mv に求める
   const auto mv{ ggLookat(0.0f, 3.0f, 8.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f) };
